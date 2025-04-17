@@ -20,5 +20,5 @@ AutoGenius: AI-Powered Automation Agent 🤖✨ An open-source AI agent that lea
 ## ⚡ Quick Start  
 1. Clone the repo:  
    ```bash
-   git clone https://github.com/your-username/AI-Automation-Agent.git
+   git clone https://github.com/djilalilayadi/AI-Automation-Agent.git
    cd AI-Automation-Agent

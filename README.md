@@ -1,6 +1,6 @@
 # AI-Automation-Agent
 AutoGenius: AI-Powered Automation Agent 🤖✨ An open-source AI agent that learns repetitive tasks (web scraping, data entry, etc.) from user demonstrations. Built with Python, LLMs, and computer vision to automate dynamic workflows.
-![Demo GIF](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDFoODNlZGd4Z3BldnJjZXVtY2VtN3U1aHZ6dW0xbmN6YzR0eGZ0biZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT5LMHxhOfscxPfIfm/giphy.gif) *(Replace with actual demo later)*  
+![Demo GIF](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDFoODNlZGd4Z3BldnJjZXVtY2VtN3U1aHZ6dW0xbmN6YzR0eGZ0biZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT5LMHxhOfscxPfIfm/giphy.gif) 
 
 ## 🔥 Features  
 - **Learn by Demonstration**: Record your actions (clicks, typing), and the agent replicates them.  

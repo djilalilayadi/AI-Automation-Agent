@@ -1,0 +1,18 @@
+[
+    {
+        "type": "web_scraper",
+        "class": "WebsiteScraper",
+        "params": {
+            "name": "User-Configured Scraper",
+            "url": "http://example.com",  // Default placeholder
+            "item_selector": "div.article",  // Common news article selector
+            "field_selectors": {
+                "title": "h2",
+                "summary": "p.summary",
+                "date": "time.publish-date"
+            },
+            "request_delay": 2,  // Seconds between requests
+            "respect_robots": true
+        }
+    }
+]

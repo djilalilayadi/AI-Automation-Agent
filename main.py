@@ -1,36 +1,44 @@
-from agent_core import AICore
-from skills.web_scraper import WebScraper
-from skills.spreadsheet import SpreadsheetManager
+import json
+from pathlib import Path
+from core.task_runner import TaskRunner
 
-class AIAgent:
-    def __init__(self):
-        self.brain = AICore()
-        self.scraper = WebScraper()
-        self.spreadsheet = SpreadsheetManager()
+def get_user_input():
+    """Allow user to configure the target website"""
+    print("\n" + "="*40)
+    print("Website Scraper Configuration")
+    print("="*40)
     
-    def execute_task(self, user_command: str):
-        """Main workflow"""
-        # Step 1: Understand the task
-        task = self.brain.understand_task(user_command)
-        print(f"Interpreted task: {task}")
-        
-        # Step 2: Execute based on task type
-        if task["action"] == "scrape":
-            results = self.scraper.scrape_jobs(task["target"])
-            if task["output"] == "spreadsheet":
-                self.spreadsheet.save_to_excel(results)
-                return "Task completed successfully!"
-        
-        return "Sorry, I couldn't complete this task yet."
+    url = input("Enter target URL (leave empty for default): ").strip()
+    delay = input("Request delay in seconds (default 2): ").strip()
+    respect_robots = input("Respect robots.txt? (y/n, default y): ").strip().lower()
+    
+    # Load default config
+    config_path = Path('config/tasks.json')
+    with open(config_path) as f:
+        config = json.load(f)
+    
+    # Update with user input
+    if url:
+        config[0]['params']['url'] = url
+    if delay:
+        config[0]['params']['request_delay'] = float(delay)
+    if respect_robots in ('n', 'no'):
+        config[0]['params']['respect_robots'] = False
+    
+    # Save updated config
+    with open(config_path, 'w') as f:
+        json.dump(config, f, indent=2)
+    
+    return config
+
+def main():
+    # Get user configuration
+    config = get_user_input()
+    
+    # Run tasks
+    runner = TaskRunner()
+    runner.load_tasks()
+    runner.execute_all()
 
 if __name__ == "__main__":
-    agent = AIAgent()
-    
-    # Example usage
-    while True:
-        user_input = input("\nWhat should I do? (or 'quit' to exit)\n> ")
-        if user_input.lower() == 'quit':
-            break
-        
-        result = agent.execute_task(user_input)
-        print(result)
+    main()
